@@ -1,34 +1,40 @@
 <html>
     <head>
-        <title></title>
-    </head>
-    <body>
-        Primeiro nome: <input type="text" id="txtFirst"><br/>
-        Último nome: <input type="text" id="txtSecond"><br/>
-        <button id="btnSubmit" onclick="displayWelcome();">Enviar</button>
+        <title>Empresa braba</title>
         <script type="text/javascript">
-            document.getElementById("txtSecond").onfocus = function(){
-                if(document.getElementById("txtFirst").value === "")
-                alert("Digite seu primeiro nome!!!");
+        function Employee(primeiroNome, ultimoNome, departamento, anosDeExperiencia){
+            this.firstName = primeiroNome;
+            this.lastName = ultimoNome;
+            this.department = departamento;
+            this.yearsOfExperience = anosDeExperiencia;
+            this.calculateSalary = function(){
+                var sal1;
+                if(this.department == "Financeiro")
+                sal1 = 5000;
+                else if(this.department == "RH")
+                sal1 = 2000;
+                else if(this.department == "Subgerente")
+                sal1 = 1800;
+                return (this.yearsOfExperience * sal1);
             };
-            document.getElementById("txtSecond").addEventListener("blur", checkLastName);
-            function checkLastName(){
-                if(document.getElementById("txtFirst").value == "")
-                alert("Digite seu último nome!!!");
+            this.displayDetails = function(){
+                var salary = this.calculateSalary();
+                document.write("Nome do empregado: " + this.firstName + " " + this.lastName + "<br/>"
+                            + "Departamento: " + this.department + "<br/>" + 
+                               "Anos de experiência: " + this.yearsOfExperience + "<br/>" + 
+                               "Salário: " + salary + "<br/><br/>")
             };
-            function displayWelcome(){
-                var first = document.getElementById("txtFirst").value;
-                var last = document.getElementById("txtSecond").value;
-                if (first != "" & last != "")
-                alert("Seja Bem-vindo " + first + " " + last + " !!!");
-                else if (first == "")
-                alert("Digite seu primeiro nome!!!");
-                else if (last == "")
-                alert("Digite seu último nome!!!");
-            }
-            window.onload = function() {
-                document.getElementById("txtFirst").focus();
-            };
+        };
+        var emp1 = new Employee("Jonathan", "Viana", "Financeiro", 16);
+        var emp2 = new Employee("Joice", "Alfredo", "Subgerente", 15);
+        var emp3 = new Employee("Elaine", "Cristina", "RH", 11);
+        var emp4 = new Employee("Davy", "Jones", "RH", 8);
+        emp1.displayDetails();
+        emp2.displayDetails();
+        emp3.displayDetails();
+        emp4.displayDetails();
         </script>
-    </body>
+    </head>
+<body>
+</body>
 </html>

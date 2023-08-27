@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        Primeiro nome: <input type="text" id="txtFirst"><br/>
+        Último nome: <input type="text" id="txtSecond"><br/>
+        <button id="btnSubmit" onclick="displayWelcome();">Enviar</button>
+        <script type="text/javascript">
+            document.getElementById("txtSecond").onfocus = function(){
+                if(document.getElementById("txtFirst").value === "")
+                alert("Digite seu primeiro nome!!!");
+            };
+            document.getElementById("txtSecond").addEventListener("blur", checkLastName);
+            function checkLastName(){
+                if(document.getElementById("txtFirst").value == "")
+                alert("Digite seu último nome!!!");
+            };
+            function displayWelcome(){
+                var first = document.getElementById("txtFirst").value;
+                var last = document.getElementById("txtSecond").value;
+                if (first != "" & last != "")
+                alert("Seja Bem-vindo " + first + " " + last + " !!!");
+                else if (first == "")
+                alert("Digite seu primeiro nome!!!");
+                else if (last == "")
+                alert("Digite seu último nome!!!");
+            }
+            window.onload = function() {
+                document.getElementById("txtFirst").focus();
+            };
+        </script>
+    </body>
+</html>
